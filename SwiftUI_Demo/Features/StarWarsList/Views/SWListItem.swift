@@ -8,6 +8,7 @@
 import SwiftUI
 import Kingfisher
 struct SWListItem: View {
+    @Environment(\.colorScheme) var colorScheme
     @State var item: SWItemRowViewModel
     var body: some View {
         HStack(alignment: .center, spacing: 10, content: {
@@ -16,7 +17,9 @@ struct SWListItem: View {
                 .clipShape(Rectangle())
                 .cornerRadius(10.0)
                 .padding(5)
-            Text(item.title).font(.headline).padding(5).font(.headline)
+            Text(item.title)
+                .font(.headline)
+                .padding(5)
         }).frame(height: 150, alignment: .leading)
     }
 }

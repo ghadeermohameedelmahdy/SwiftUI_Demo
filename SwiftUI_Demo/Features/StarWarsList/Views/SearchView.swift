@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchView: View {
 
-    @State var viewModel: StarwarsListViewModel
+    @State var viewModel: SWListViewModel
     @State private var showCancelButton: Bool = false
     var body: some View {
         // Search view

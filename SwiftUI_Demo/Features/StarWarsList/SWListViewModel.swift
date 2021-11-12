@@ -13,7 +13,7 @@ enum ViewState: Equatable {
     case finishWithError(error: String)
     case idle
 }
-class StarwarsListViewModel: ObservableObject {
+class SWListViewModel: ObservableObject {
     @Published var searchName: String = ""
     @Published var dataSource: [SWItemRowViewModel] = []
     @Published var responseState: ViewState = .idle
@@ -30,7 +30,7 @@ class StarwarsListViewModel: ObservableObject {
                 .receive(on: DispatchQueue.main)
                 .sink(receiveValue: {[weak self] search in
                     guard let self = self else { return }
-                    self.dataSource = search.isEmpty ? self.data : self.data.filter({$0.title.contains(search.lowercased())})
+                    self.dataSource = search.isEmpty ? self.data : self.data.filter({$0.title.contains(search)})
                 })
               .store(in: &disposables)
     }

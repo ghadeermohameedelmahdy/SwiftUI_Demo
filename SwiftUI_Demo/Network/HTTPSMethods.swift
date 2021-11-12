@@ -6,3 +6,6 @@
 //
 
 import Foundation
+enum HTTPSMethods: String {
+   case Get = "Get"
+}

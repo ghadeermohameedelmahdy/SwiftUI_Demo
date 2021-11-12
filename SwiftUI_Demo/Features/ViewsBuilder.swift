@@ -8,8 +8,11 @@
 import Foundation
 import SwiftUI
 enum ViewsBuilder {
-  static func makeStarwarsCatsListView() -> some View {
-    let viewModel = StarwarsListViewModel()
-    return StarWarsCatsListView(viewModel: viewModel)
+  static func makeSWListView() -> some View {
+    let viewModel = SWListViewModel()
+    return SWListView(viewModel: viewModel)
   }
+    static func makeSWItemDetails(item: SWItemRowViewModel) -> some View {
+      return SWItemDetailsView(item: item)
+    }
 }

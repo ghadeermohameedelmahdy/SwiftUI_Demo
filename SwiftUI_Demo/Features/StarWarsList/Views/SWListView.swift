@@ -8,8 +8,8 @@
 import SwiftUI
 import Combine
 struct SWListView: View {
-    @ObservedObject var viewModel: StarwarsListViewModel
-    init(viewModel: StarwarsListViewModel) {
+    @ObservedObject var viewModel: SWListViewModel
+    init(viewModel: SWListViewModel) {
         self.viewModel = viewModel
         viewModel.fetchWeather()
     }
@@ -22,13 +22,14 @@ struct SWListView: View {
                         ProgressView()
                         Spacer()
                     case .finishWithData:
-                        searchField
+                        SearchView(viewModel: viewModel)
                       if viewModel.dataSource.isEmpty {
                         TextView(title: "No results yet")
                       }else {
                         List {
                         catSection
-                        }.listStyle(InsetListStyle())
+                        }
+                        .listStyle(InsetListStyle())
                         .resignKeyboardOnDragGesture()
                       }
                     case .finishWithError (let error):
@@ -57,8 +58,7 @@ private extension SWListView {
         Section {
             ForEach(viewModel.dataSource) { item in
                 VStack(alignment: .leading) {
-                    NavigationLink(
-                      destination: SWItemDetailsView()) {
+                    NavigationLink(destination: ViewsBuilder.makeSWItemDetails(item: item)) {
                         SWListItem(item: item)
                     }
                 }
@@ -69,6 +69,6 @@ private extension SWListView {
 }
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ViewsBuilder.makeStarwarsCatsListView()
+        ViewsBuilder.makeSWListView()
     }
 }

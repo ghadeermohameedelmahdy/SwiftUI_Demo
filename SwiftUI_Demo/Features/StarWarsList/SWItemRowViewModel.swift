@@ -19,9 +19,37 @@ struct SWItemRowViewModel: Identifiable {
     guard let title = item.name else { return "" }
     return title
   }
-    var image: String {
-        guard let img = item.image else { return "" }
-        return img
+  var image: String {
+        guard let data = item.image else { return "" }
+        return data
+  }
+    var birthYear: String {
+        guard let data = item.birthYear else { return "1990" }
+          return "Birth Year: \(data)"
+    }
+    var eyeColor: String {
+        guard let data = item.eyeColor else { return "black" }
+          return "Eye Color: \(data)"
+    }
+    var hairColor: String {
+        guard let data = item.hairColor else { return "black" }
+          return  "Hair Color: \(data)"
+    }
+    var gender: String {
+        guard let data = item.gender else { return "n/a" }
+          return  "Gender: \(data)"
+    }
+    var height: String {
+    guard let data = item.height else { return "100" }
+          return  "Height: \(data)"
+    }
+    var mass: String {
+        guard let data = item.mass else { return "mass" }
+          return  "Mass: \(data)"
+    }
+    var skinColor: String {
+    guard let data = item.skinColor else { return "black" }
+          return  "Skin Color: \(data)"
     }
   init(item: StarwarsCatsResponse.Result) {
     self.item = item

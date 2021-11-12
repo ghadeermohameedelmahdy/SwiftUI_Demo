@@ -7,12 +7,15 @@
 
 import Foundation
 import Combine
-protocol WeatherFetchable {
-  func weeklyWeatherForecast(
-    forCity city: String
-  ) -> AnyPublisher<WeeklyForecastResponse, WeatherError>
+protocol StarwarsListUsecaseProtocol {
+  func fetchStarWarsList() -> AnyPublisher<StarwarsCatsResponse, APIError>
+}
 
-  func currentWeatherForecast(
-    forCity city: String
-  ) -> AnyPublisher<CurrentWeatherForecastResponse, WeatherError>
+class StarwarsListUsecase: StarwarsListUsecaseProtocol {
+    static let shared = StarwarsListUsecase()
+    private init (){}
+    
+    func fetchStarWarsList() -> AnyPublisher<StarwarsCatsResponse, APIError> {
+        return NetworkManager.shared.makeRequest(with: StarWarsListAPI.shared)
+    }
 }

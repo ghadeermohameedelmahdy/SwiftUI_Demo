@@ -7,9 +7,11 @@
 
 import Foundation
 struct StarWarsListAPI: APIComponents {
+    static let shared = StarWarsListAPI()
+    private init (){}
     var scheme: String = "https"
-    var host: String = "github.com"
-    var path: String = "/EsraaAbdelmotteleb/DuetAPI/blob/gh-pages/project.json"
+    var host: String = "raw.githubusercontent.com"
+    var path: String = "/EsraaAbdelmotteleb/DuetAPI/gh-pages/project.json"
     var method: HTTPSMethods = .Get
 }
 
